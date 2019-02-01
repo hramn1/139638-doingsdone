@@ -83,7 +83,8 @@ $show_complete_tasks = rand(0, 1);
                 </div>
 
                 <table class="tasks">
-                <?php    if($show_complete_tasks === 1){echo '<tr class="tasks__item task task--completed">
+                <?php    if($show_complete_tasks === 1)
+                {  ?> <tr class="tasks__item task task--completed">
                                                                 <td class="task__select">
                                                                     <label class="checkbox task__checkbox">
                                                                         <input class="checkbox__input visually-hidden" type="checkbox" checked>
@@ -94,7 +95,7 @@ $show_complete_tasks = rand(0, 1);
 
                                                                 <td class="task__controls">
                                                                 </td>
-                                                            </tr>' ;  } ?>
+                                                            </tr>  <?php } ?>
                     <tr class="tasks__item task">
                         <td class="task__select">
                             <label class="checkbox task__checkbox">
