@@ -40,7 +40,7 @@ $tasks = [
         'complete' => false
         ]
 ];
-    function show_task ($tasks, $project){
+    function countTask ($tasks, $project){
         $count = 0;
         foreach ($tasks as $task) {
             if($task['category'] === $project){
@@ -94,11 +94,10 @@ $tasks = [
 
                 <nav class="main-navigation">
                     <ul class="main-navigation__list">
-                    <?php foreach ($projects as $value)
-                        { ?>
+                    <?php foreach ($projects as $project) { ?>
                         <li class="main-navigation__list-item">
-                            <a class="main-navigation__list-item-link" href="#"><?= $value ?></a>
-                            <span class="main-navigation__list-item-count"><?php echo show_task ($tasks, $value) ?></span>
+                            <a class="main-navigation__list-item-link" href="#"><?= $project ?></a>
+                            <span class="main-navigation__list-item-count"><?php echo countTask ($tasks, $project) ?></span>
                         </li>
                      <?php } ?>
                     </ul>
@@ -134,10 +133,8 @@ $tasks = [
                 </div>
 
                <table class="tasks">
-                                   <?php foreach ($tasks as $task)
-                                   { ?>
-                                     <?php if ($show_complete_tasks === 0 and $task['complete']) { continue; }
-                                                                       ?>
+               <?php foreach ($tasks as $task) { ?>
+                 <?php if ($show_complete_tasks === 0 and $task['complete']) { continue; } ?>
                     <tr class="tasks__item task <?php if($task['complete']) { print ('task--completed'); }?>" data-category = '<?= $task['category']  ?>' >
                         <td class="task__select">
                             <label class="checkbox task__checkbox">
