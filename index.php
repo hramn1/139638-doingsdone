@@ -136,10 +136,9 @@ $tasks = [
                <table class="tasks">
                                    <?php foreach ($tasks as $task)
                                    { ?>
-
-                    <tr class="tasks__item task <?php if($task['complete']) { print ('task--completed'); }?>" data-category = '<?= $task['category']  ?>'
-                      <?php if ($show_complete_tasks === 0 and $task['complete']) { print ('style = "display:none"'); }
-                                                        ?> >
+                                     <?php if ($show_complete_tasks === 0 and $task['complete']) { continue; }
+                                                                       ?>
+                    <tr class="tasks__item task <?php if($task['complete']) { print ('task--completed'); }?>" data-category = '<?= $task['category']  ?>' >
                         <td class="task__select">
                             <label class="checkbox task__checkbox">
                                 <input class="checkbox__input visually-hidden task__checkbox" type="checkbox" value="1">
