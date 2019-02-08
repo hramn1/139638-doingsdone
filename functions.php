@@ -24,4 +24,17 @@ function countTask ($tasks, $project){
         }
             return $count;
     }
+function deadLine($deadtime) {
+  $currentDate = time();
+  $deadLine = 60 * 60 * 24;
+  if ($deadtime === "Нет"){
+    return '';
+  } else {
+    $deadtime = strtotime("$deadtime");
+    $diffTime =   $deadtime - $currentDate;
+    if ($diffTime <= $deadLine ){
+      return 'task--important';
+    }
+  }
+}
 ?>
