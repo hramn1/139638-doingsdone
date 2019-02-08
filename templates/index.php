@@ -25,15 +25,15 @@
 <table class="tasks">
 <?php foreach ($tasks as $task) { ?>
  <?php if ($show_complete_tasks === 0 and $task['complete']) { continue; } ?>
-    <tr class="tasks__item task <?php if($task['complete']) { print ('task--completed'); }?>" data-category = '<?= $task['category']  ?>' >
+    <tr class="tasks__item task <?php if($task['complete']) { print ('task--completed'); }?>" data-category = '<?= strip_tags($task['category'])  ?>' >
         <td class="task__select">
             <label class="checkbox task__checkbox">
                 <input class="checkbox__input visually-hidden task__checkbox" type="checkbox" value="1">
-                <span class="checkbox__text"><?= $task['task']  ?></span>
+                <span class="checkbox__text"><?= strip_tags($task['task']) ?></span>
             </label>
         </td>
 
-        <td class="task__date"><?= $task['date']  ?></td>
+        <td class="task__date"><?= strip_tags($task['date'])  ?></td>
     </tr>
      <?php } ?>
     <!--показывать следующий тег <tr/>, если переменная $show_complete_tasks равна единице-->

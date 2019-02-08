@@ -15,9 +15,13 @@ function include_template($name, $data) {
 
     return $result;
 }
-function esc($str)
-{
-  $text = strip_tags($str);
-  return $text;
-}
+function countTask ($tasks, $project){
+        $count = 0;
+        foreach ($tasks as $task) {
+            if($task['category'] === $project){
+            $count = $count + 1;
+            }
+        }
+            return $count;
+    }
 ?>

@@ -1,16 +1,3 @@
-<?php
-// показывать или нет выполненные задачи
-$projects = ['Входящие', "Учеба", "Работа", "Домашние дела", "Авто" ];
-    function countTask ($tasks, $project){
-        $count = 0;
-        foreach ($tasks as $task) {
-            if($task['category'] === $project){
-            $count = $count + 1;
-            }
-        }
-            return $count;
-    }
-?>
 <!DOCTYPE html>
 <html lang="ru">
 
