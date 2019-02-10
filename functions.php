@@ -25,16 +25,13 @@ function countTask ($tasks, $project){
             return $count;
     }
 function isExpire($dateString) {
-  $currentDate = time();
-  $deadLine = 60 * 60 * 24;
-  if (!(bool)strtotime($dateString)){
-    return false;
-  } else {
-    $dateString = strtotime("$dateString");
-    $diffTime =   $dateString - $currentDate;
-    if ($diffTime <= $deadLine ){
-      return true;
+    if (!(bool)strtotime($dateString)){
+        return false;
     }
-  }
+$date =strtotime('+1 day', strtotime($dateString));
+    if($date < time()){
+        return true;
+    }
+        return false;
 }
 ?>
