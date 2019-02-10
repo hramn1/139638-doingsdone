@@ -25,16 +25,15 @@ function countTask ($tasks, $project){
             return $count;
     }
 function isExpire($dateString) {
-  date_default_timezone_set("Europe/Moscow");
   $currentDate = time();
   $deadLine = 60 * 60 * 24;
   if (!(bool)strtotime($dateString)){
-    return 'false';
+    return false;
   } else {
     $dateString = strtotime("$dateString");
     $diffTime =   $dateString - $currentDate;
     if ($diffTime <= $deadLine ){
-      return 'true';
+      return true;
     }
   }
 }
