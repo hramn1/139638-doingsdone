@@ -18,14 +18,14 @@
         <!--добавить сюда аттрибут "checked", если переменная $show_complete_tasks равна единице-->
         <input class="checkbox__input visually-hidden show_completed" <?php if($show_complete_tasks === 1){print('checked');  } ?>  type="checkbox">
 
-        <span class="checkbox__text">Показывать выполненные</span>
+        <span class="checkbox__text">Показывать выполненные </span>
     </label>
 </div>
 
 <table class="tasks">
 <?php foreach ($tasks as $task) { ?>
  <?php if ($show_complete_tasks === 0 and $task['complete']) { continue; } ?>
-    <tr class="tasks__item task <?php if($task['complete']) { print ('task--completed'); }?>" data-category = '<?= strip_tags($task['category'])  ?>' >
+    <tr class="tasks__item task <?php if($task['complete']) { print ('task--completed'); }; if (isExpire($task['date'])) {echo  ('task--important'); };?>" data-category = '<?= strip_tags($task['category'])  ?>' >
         <td class="task__select">
             <label class="checkbox task__checkbox">
                 <input class="checkbox__input visually-hidden task__checkbox" type="checkbox" value="1">

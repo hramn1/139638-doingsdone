@@ -10,6 +10,7 @@
 </head>
 
 <body>
+
 <h1 class="visually-hidden">Дела в порядке</h1>
 
 <div class="page-wrapper">

@@ -24,4 +24,14 @@ function countTask ($tasks, $project){
         }
             return $count;
     }
+function isExpire($dateString) {
+    if (!(bool)strtotime($dateString)){
+        return false;
+    }
+$date =strtotime('+1 day', strtotime($dateString));
+    if($date < time()){
+        return true;
+    }
+        return false;
+}
 ?>
