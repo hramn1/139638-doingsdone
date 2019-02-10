@@ -25,7 +25,7 @@
 <table class="tasks">
 <?php foreach ($tasks as $task) { ?>
  <?php if ($show_complete_tasks === 0 and $task['complete']) { continue; } ?>
-    <tr class="tasks__item task <?php if($task['complete']) { print ('task--completed'); }; echo deadLine($task['date']);?>" data-category = '<?= strip_tags($task['category'])  ?>' >
+    <tr class="tasks__item task <?php if($task['complete']) { print ('task--completed'); }; if (isExpire($task['date']) === 'true') {echo  ('task--important'); };?>" data-category = '<?= strip_tags($task['category'])  ?>' >
         <td class="task__select">
             <label class="checkbox task__checkbox">
                 <input class="checkbox__input visually-hidden task__checkbox" type="checkbox" value="1">

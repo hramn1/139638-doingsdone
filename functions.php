@@ -24,16 +24,17 @@ function countTask ($tasks, $project){
         }
             return $count;
     }
-function deadLine($deadtime) {
+function isExpire($dateString) {
+  date_default_timezone_set("Europe/Moscow");
   $currentDate = time();
   $deadLine = 60 * 60 * 24;
-  if ($deadtime === "Нет"){
-    return '';
+  if (!(bool)strtotime($dateString)){
+    return 'false';
   } else {
-    $deadtime = strtotime("$deadtime");
-    $diffTime =   $deadtime - $currentDate;
+    $dateString = strtotime("$dateString");
+    $diffTime =   $dateString - $currentDate;
     if ($diffTime <= $deadLine ){
-      return 'task--important';
+      return 'true';
     }
   }
 }
