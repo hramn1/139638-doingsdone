@@ -4,16 +4,19 @@ CREATE DATABASE doingsdone
   USE doingsdone;
 CREATE TABLE projects (
  id INT AUTO_INCREMENT PRIMARY_KEY,
- name CHAR(64)
+ name CHAR(64),
+ user_id INT
 );
 CREATE TABLE tasks (
  id INT AUTO_INCREMENT PRIMARY_KEY,
- сreat_dt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
- comp_dt TIMESTAMP,
+ сreate_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+ complete_date TIMESTAMP,
  status INT DEFAULT 0 CHECK (status=0 and status=1),
  name CHAR(64),
  file CHAR(256),
- exp_dt TIMESTAMP
+ expire_date TIMESTAMP,
+ user_id INT,
+ project_id INT
 );
 CREATE TABLE users (
  id INT AUTO_INCREMENT PRIMARY_KEY,
