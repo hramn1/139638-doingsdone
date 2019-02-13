@@ -10,11 +10,11 @@ CREATE TABLE projects (
 CREATE TABLE tasks (
  id INT AUTO_INCREMENT PRIMARY KEY,
  сreate_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
- complete_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+ complete_date TIMESTAMP,
  status INT DEFAULT 0 CHECK (status=0 and status=1),
  name CHAR(64) UNIQUE,
  file CHAR(128),
- expire_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+ expire_date TIMESTAMP,
  user_id INT,
  project_id INT
 );
@@ -27,3 +27,4 @@ CREATE TABLE users (
 );
  CREATE UNIQUE INDEX t_name ON tasks(name);
  CREATE UNIQUE INDEX c_email ON users(email);
+ --SET SQL_MODE='ALLOW_INVALID_DATES';
