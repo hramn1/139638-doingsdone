@@ -1,5 +1,5 @@
-INSERT INTO users SET email = 'goga@ya.ru', usr_name = 'Вася', usr_pass = '223322';
-INSERT INTO users  SET email = 'goga1@ya.ru', usr_name = 'Петя', usr_pass = 'qwerty';
+INSERT INTO users SET email = 'goga@ya.ru', usr_name = 'Вася', usr_pass = '$2y$10$wyVXbp2PY6rTKCIKPqBn0O.CJswQWcmV/S42Fx8DC6RfgIuFJDW9q';
+INSERT INTO users  SET email = 'goga1@ya.ru', usr_name = 'Петя', usr_pass = '$2y$10$kDTzlf.vpBQ60Ku3Qe5xqekoTEqElXjWG75Az41oCgYHtVEnHA2wa';
 
 INSERT INTO projects SET name = 'Входящие', user_id = '1';
 INSERT INTO projects SET name = 'Учеба', user_id = '2';
@@ -16,14 +16,16 @@ VALUES
 ('12-02-2019', '14-04-2019', '0', 'Купить корм для кота', NULL, NULL, 1, 4),
 ('12-02-2019', '15-09-2019', '0', 'Заказать пиццу', NULL, NULL, 2, 4);
 --получить список из всех проектов для одного пользователя
-SELECT name FROM projects
+SELECT * FROM projects
 WHERE user_id = '2';
 --получить список из всех задач для одного проекта
-SELECT name FROM tasks
+SELECT t.name, u.usr_name FROM tasks t
+JOIN  users u
+ON t.user_id = u.id
 WHERE project_id = '4';
 --пометить задачу как выполненную
 UPDATE tasks SET status = '1'
-WHERE (name = 'Заказать пиццу' AND project_id = 4);
+WHERE (project_id = 4);
 --обновить название задачи по её идентификатору
 UPDATE tasks SET name = 'Собеседование в Макдональдс'
 WHERE id = 1 ;
