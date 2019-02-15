@@ -29,7 +29,7 @@
                     </div>
 
                     <div class="user-menu__data">
-                        <p>Константин</p>
+                        <p><?php  print($user_name['usr_name'])   ?></p>
 
                         <a href="#">Выйти</a>
                     </div>
