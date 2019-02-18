@@ -34,4 +34,8 @@ $date =strtotime('+1 day', strtotime($dateString));
     }
         return false;
 }
+function reusltArray ($link, $sql) {
+  $result = mysqli_query($link, $sql) or die (mysqli_error($link));
+  return $result;
+}
 ?>

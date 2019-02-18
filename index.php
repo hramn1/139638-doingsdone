@@ -4,9 +4,8 @@
   require('functions.php');
   $link = mysqli_connect('localhost', 'doing', '300685', 'doingsdone') or die (mysqli_connect_error($link));
   mysqli_set_charset($link, "utf8");
-  $sql_name ='SELECT usr_name FROM users WHERE id=1';
-  $result_name = mysqli_query($link, $sql_name) or die (mysqli_error($link));
-  $user_name = mysqli_fetch_assoc($result_name);
+  $sql ='SELECT usr_name FROM users WHERE id=1';
+  $user = mysqli_fetch_assoc(reusltArray($link, $sql));
   $sql_projects = 'SELECT * FROM projects WHERE user_id=1';
   $result_projects = mysqli_query($link, $sql_projects) or die (mysqli_error($link));
   $projects_list = mysqli_fetch_all($result_projects, MYSQLI_ASSOC);
@@ -20,7 +19,7 @@
   			]);
   $layout_content = include_template('layout.php', [
         'tasks' => $tasks_list,
-        'user_name' => $user_name,
+        'user' => $user,
         'projects' => $projects_list,
   			'main' => $page_content,
   			'title' => 'Дела в порядке'
