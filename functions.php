@@ -1,4 +1,5 @@
 <?php
+require("mysql_helper.php");
 function include_template($name, $data) {
     $name = 'templates/' . $name;
     $result = '';
@@ -34,8 +35,18 @@ $date =strtotime('+1 day', strtotime($dateString));
     }
         return false;
 }
-function reusltArray ($link, $sql) {
+
+function resultArray ($link, $sql, $data = []) {
+ $stmt = db_get_prepare_stmt($link, $sql, $data);
+  mysqli_stmt_execute($stmt);
+  if ($result = mysqli_stmt_get_result($stmt)) {
   $result = mysqli_query($link, $sql) or die (mysqli_error($link));
-  return $result;
+   return $result;
+    }
+    else {
+        $error = mysqli_error($link);
+        print("Ошибка MySQL:" .$error);
+        exit();
+    }
 }
 ?>

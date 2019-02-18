@@ -10,7 +10,6 @@
 </head>
 
 <body>
-
 <h1 class="visually-hidden">Дела в порядке</h1>
 
 <div class="page-wrapper">
@@ -29,7 +28,7 @@
                     </div>
 
                     <div class="user-menu__data">
-                        <p><?php  print($user_name['usr_name'])   ?></p>
+                        <p><?php  print($user['usr_name'])   ?></p>
 
                         <a href="#">Выйти</a>
                     </div>
