@@ -37,16 +37,14 @@ $date =strtotime('+1 day', strtotime($dateString));
 }
 
 function resultArray ($link, $sql, $data = []) {
- $stmt = db_get_prepare_stmt($link, $sql, $data);
-  mysqli_stmt_execute($stmt);
-  if ($result = mysqli_stmt_get_result($stmt)) {
-  $result = mysqli_query($link, $sql) or die (mysqli_error($link));
-   return $result;
+    $stmt = db_get_prepare_stmt($link, $sql, $data);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+    if ($result) {
+    return mysqli_fetch_all($result,MYSQLI_ASSOC);
     }
     else {
-        $error = mysqli_error($link);
-        print("Ошибка MySQL:" .$error);
-        exit();
+    return false;
     }
 }
 ?>
