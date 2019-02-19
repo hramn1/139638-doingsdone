@@ -10,7 +10,6 @@
 </head>
 
 <body>
-
 <h1 class="visually-hidden">Дела в порядке</h1>
 
 <div class="page-wrapper">
@@ -29,7 +28,7 @@
                     </div>
 
                     <div class="user-menu__data">
-                        <p>Константин</p>
+                        <p><?php  print($user[0]['usr_name'])   ?></p>
 
                         <a href="#">Выйти</a>
                     </div>
@@ -45,8 +44,8 @@
                     <ul class="main-navigation__list">
                     <?php foreach ($projects as $project) { ?>
                         <li class="main-navigation__list-item">
-                            <a class="main-navigation__list-item-link" href="#"><?= $project ?></a>
-                            <span class="main-navigation__list-item-count"><?php echo countTask ($tasks, $project) ?></span>
+                            <a class="main-navigation__list-item-link" href="#"><?= $project['name'] ?></a>
+                            <span class="main-navigation__list-item-count"><?php echo countTask ($tasks, $project['id']) ?></span>
                         </li>
                      <?php } ?>
                     </ul>

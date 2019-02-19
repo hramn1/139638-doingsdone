@@ -1,4 +1,5 @@
 <?php
+require("mysql_helper.php");
 function include_template($name, $data) {
     $name = 'templates/' . $name;
     $result = '';
@@ -18,7 +19,7 @@ function include_template($name, $data) {
 function countTask ($tasks, $project){
         $count = 0;
         foreach ($tasks as $task) {
-            if($task['category'] === $project){
+            if($task['project_id'] === $project){
             $count = $count + 1;
             }
         }
@@ -33,5 +34,17 @@ $date =strtotime('+1 day', strtotime($dateString));
         return true;
     }
         return false;
+}
+
+function resultArray ($link, $sql, $data = []) {
+    $stmt = db_get_prepare_stmt($link, $sql, $data);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+    if ($result) {
+    return mysqli_fetch_all($result,MYSQLI_ASSOC);
+    }
+    else {
+    return false;
+    }
 }
 ?>

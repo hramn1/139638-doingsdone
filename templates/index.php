@@ -24,16 +24,16 @@
 
 <table class="tasks">
 <?php foreach ($tasks as $task) { ?>
- <?php if ($show_complete_tasks === 0 and $task['complete']) { continue; } ?>
-    <tr class="tasks__item task <?php if($task['complete']) { print ('task--completed'); }; if (isExpire($task['date'])) {echo  ('task--important'); };?>" data-category = '<?= strip_tags($task['category'])  ?>' >
+ <?php if ($show_complete_tasks === 0 and $task['status']) { continue; } ?>
+    <tr class="tasks__item task <?php if($task['status']) { print ('task--completed'); }; if (isExpire($task['expire_date'])) {echo  ('task--important'); };?>" data-category = '<?= strip_tags($task['project_id'])  ?>' >
         <td class="task__select">
             <label class="checkbox task__checkbox">
                 <input class="checkbox__input visually-hidden task__checkbox" type="checkbox" value="1">
-                <span class="checkbox__text"><?= strip_tags($task['task']) ?></span>
+                <span class="checkbox__text"><?= strip_tags($task['name']) ?></span>
             </label>
         </td>
 
-        <td class="task__date"><?= strip_tags($task['date'])  ?></td>
+        <td class="task__date"><?= strip_tags($task['сreate_date'])  ?></td>
     </tr>
      <?php } ?>
     <!--показывать следующий тег <tr/>, если переменная $show_complete_tasks равна единице-->
