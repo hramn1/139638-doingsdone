@@ -23,7 +23,7 @@
 </div>
 
 <table class="tasks">
-<?php foreach ($tasks as $task) { ?>
+<?php foreach ($tasks_project as $task) { ?>
  <?php if ($show_complete_tasks === 0 and $task['status']) { continue; } ?>
     <tr class="tasks__item task <?php if($task['status']) { print ('task--completed'); }; if (isExpire($task['expire_date'])) {echo  ('task--important'); };?>" data-category = '<?= strip_tags($task['project_id'])  ?>' >
         <td class="task__select">

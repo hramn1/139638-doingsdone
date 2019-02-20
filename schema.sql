@@ -27,4 +27,3 @@ CREATE TABLE users (
 );
  CREATE UNIQUE INDEX t_name ON tasks(name);
  CREATE UNIQUE INDEX c_email ON users(email);
- --SET SQL_MODE='ALLOW_INVALID_DATES';
