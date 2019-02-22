@@ -8,7 +8,6 @@
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/flatpickr.min.css">
 </head>
-
 <body>
 <h1 class="visually-hidden">Дела в порядке</h1>
 
@@ -81,12 +80,13 @@
 
             <input class="form__input" type="text" name="name" id="name" value="" placeholder="Введите название">
           </div>
-
           <div class="form__row">
             <label class="form__label" for="project">Проект</label>
-
             <select class="form__input form__input--select" name="project" id="project">
-              <option value="">Входящие</option>
+                      <?php foreach ($projects as $project) {  ?>
+              <option value="<?=$project['name']?>"><?=$project['name']?></option>
+                        <?php } ?>
+
             </select>
           </div>
 
