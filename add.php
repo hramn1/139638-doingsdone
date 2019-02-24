@@ -59,7 +59,7 @@ if (!$link) {
 
 
 
-    $content = include_template('add-project.php', [
+    $content = include_template('add-task.php', [
     'projects' => $projects,
     'errors' => $errors
     ]);
