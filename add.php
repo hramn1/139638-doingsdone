@@ -2,6 +2,7 @@
 require_once 'functions.php';
 $link = mysqli_connect('localhost', 'doing', '300685', 'doingsdone') or die (mysqli_connect_error($link));
 mysqli_set_charset($link, "utf8");
+$user_id = 1;
 if (!empty($_POST)) {
     $task = $_POST;
     foreach ($task as $key => $value) {
@@ -10,8 +11,6 @@ if (!empty($_POST)) {
     // Обязательные поля
     if (empty($task['name'])) {
         $errors['name'] = 'Это поле надо заполнить';
-        print('2');
-        var_dump($errors);
     }
     // Проверка полей
     if (empty($errors['name']) and strlen($task['name']) > 128) {
@@ -37,14 +36,14 @@ if (!empty($_POST)) {
         $file = 'null';
     }
     if (empty($errors)) {
-      print('5');
         $task_name = $task['name'];
         $project_name = 'null';
         if (!empty($task['project'])) {
             $project_name = $task['project'];
         }
+
         $sql = 'INSERT INTO tasks (сreate_date, complete_date, status, name, file, expire_date, user_id, project_id)
-        VALUES (NOW(), NULL, 0, "' . $task_name .'", ' . $file . ', ' . $deadline . ', ' . $user_id . ', ' . $project_name . ')';
+        VALUES (NOW(), NULL, 0, "' . $task_name .'", ' . $file . ' , ' . $deadline . ', ' . $user_id . ', ' . $project_name . ')';
         $result_task = mysqli_query($link, $sql);
         if ($result_task) {
             header("Location: /");
@@ -60,7 +59,10 @@ if (!$link) {
 
 
 
-    $content = include_template('add-project.php', ['projects' => $projects]);
+    $content = include_template('add-project.php', [
+    'projects' => $projects,
+    'errors' => $errors
+    ]);
 
 
  $layout_content = include_template('layout.php', [
