@@ -36,11 +36,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
             $errors['email'] = 'E-mail введён некорректно';
         }
-        $sql = 'SELECT user_id FROM users WHERE email = "' . $data['email'] . '"';
+        $sql = 'SELECT id FROM users WHERE email = "' . $data['email'] . '"';
         $res = mysqli_query($link, $sql);
-        // if (mysqli_num_rows($res) > 0) {
-        //     $errors['email'] = 'Пользователь с этим email уже зарегистрирован';
-        // }
+        if (mysqli_num_rows($res) > 0) {
+            $errors['email'] = 'Пользователь с этим email уже зарегистрирован';
+        }
     }
     // Пароль
     if (!empty($data['password'])) {
@@ -51,6 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $result_user = mysqli_query($link, $sql_user);
         if ($result_user) {
             header("Location: /");
+            exit();
         }
     }
 }
