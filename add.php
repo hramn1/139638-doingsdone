@@ -14,6 +14,7 @@ if (!empty($_POST)) {
     foreach ($task as $key => $value) {
         $task[$key] = trim($value);
     }
+    $task['name'] = strip_tags($task['name']);
     // Обязательные поля
     if (empty($task['name'])) {
         $errors['name'] = 'Это поле надо заполнить';
