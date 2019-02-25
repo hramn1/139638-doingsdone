@@ -16,8 +16,10 @@
                       <?php foreach ($projects as $project) {  ?>
               <option value="<?=$project['id']?>"><?=$project['name']?></option>
                         <?php } ?>
-
             </select>
+            <p class="form__message"><?= $errors['project']  ?></p>
+
+
           </div>
 
           <div class="form__row">
@@ -38,6 +40,7 @@
                 <span>Выберите файл</span>
               </label>
             </div>
+            <p class="form__message"><?= $errors['file']  ?></p>
           </div>
 
           <div class="form__row form__row--controls">
