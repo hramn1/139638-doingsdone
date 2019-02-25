@@ -37,25 +37,32 @@
             <div class="form__row">
               <label class="form__label" for="email">E-mail <sup>*</sup></label>
 
-              <input class="form__input form__input--error" type="text" name="email" id="email" value="" placeholder="Введите e-mail">
+              <input class="form__input <?php if (!empty($errors['email'])){
+                                                    print ("form__input--error");} ?>" type="email" name="email" id="email" value="" placeholder="Введите e-mail">
 
-              <p class="form__message">E-mail введён некорректно</p>
+              <p class="form__message"><?= $errors['email'] ?></p>
             </div>
 
             <div class="form__row">
               <label class="form__label" for="password">Пароль <sup>*</sup></label>
 
-              <input class="form__input" type="password" name="password" id="password" value="" placeholder="Введите пароль">
+              <input class="form__input <?php if (!empty($errors['password'])){
+                                                    print ("form__input--error");} ?>" type="password" name="password" id="password" value="" placeholder="Введите пароль">
+              <p class="form__message"><?= $errors['password'] ?></p>
             </div>
 
             <div class="form__row">
               <label class="form__label" for="name">Имя <sup>*</sup></label>
 
-              <input class="form__input" type="password" name="name" id="name" value="" placeholder="Введите пароль">
+              <input class="form__input  <?php if (!empty($errors['name'])){
+                                                    print ("form__input--error");} ?>  " type="text" name="name" id="name" value="" placeholder="Введите имя">
+              <p class="form__message"><?= $errors['name'] ?></p>
             </div>
 
             <div class="form__row form__row--controls">
-              <p class="error-message">Пожалуйста, исправьте ошибки в форме</p>
+              <?php if (!empty($errors)) : ?>
+                  <p class="form__message">Пожалуйста, исправьте ошибки в форме</p>
+          <?php endif; ?>
 
               <input class="button" type="submit" name="" value="Зарегистрироваться">
             </div>

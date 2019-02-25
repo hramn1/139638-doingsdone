@@ -7,9 +7,9 @@ mysqli_set_charset($link, "utf8");
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Экранируем спецсимволы
     if (!empty($_POST)) {
+      var_dump($_POST);
         $data = $_POST;
         foreach ($data as $key => $value) {
-            $value = mysqli_real_escape_string($link, $value);
             // Удаляет пробелы из начала и конца строки
             $data[$key] = trim($value);
         }
@@ -47,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $password = password_hash($data['password'], PASSWORD_DEFAULT);
     }
     if (empty($errors)) {
-        $sql_user = 'INSERT INTO users (date_registration, email, name, password) VALUES (NOW(), "' . $data['email'] . '", "' . $data['name'] . '", "' . $password . '")';
+        $sql_user = 'INSERT INTO users (reg_dt, email, usr_name, usr_pass) VALUES ('NOW()', "44", "656565", "6545")';
         $result_user = mysqli_query($link, $sql_user);
         if ($result_user) {
             header("Location: /");
