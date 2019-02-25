@@ -7,7 +7,7 @@ mysqli_set_charset($link, "utf8");
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Экранируем спецсимволы
     if (!empty($_POST)) {
-      var_dump($_POST);
+      // var_dump($_POST);
         $data = $_POST;
         foreach ($data as $key => $value) {
             // Удаляет пробелы из начала и конца строки
@@ -38,16 +38,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
         $sql = 'SELECT user_id FROM users WHERE email = "' . $data['email'] . '"';
         $res = mysqli_query($link, $sql);
-        if (mysqli_num_rows($res) > 0) {
-            $errors['email'] = 'Пользователь с этим email уже зарегистрирован';
-        }
+        // if (mysqli_num_rows($res) > 0) {
+        //     $errors['email'] = 'Пользователь с этим email уже зарегистрирован';
+        // }
     }
     // Пароль
     if (!empty($data['password'])) {
         $password = password_hash($data['password'], PASSWORD_DEFAULT);
     }
     if (empty($errors)) {
-        $sql_user = 'INSERT INTO users (reg_dt, email, usr_name, usr_pass) VALUES ('NOW()', "44", "656565", "6545")';
+        $sql_user = 'INSERT INTO users (reg_dt, email, usr_name, usr_pass) VALUES (NOW(), "' . $data['email'] . '", "' . $data['name'] . '", "' . $password . '")';
         $result_user = mysqli_query($link, $sql_user);
         if ($result_user) {
             header("Location: /");
