@@ -16,6 +16,11 @@ if (!empty($_POST)) {
     if (empty($errors['name']) and strlen($task['name']) > 128) {
         $errors['name'] = 'Название не может быть длиннее 128 символов';
     }
+    $task_name = $task['name'];
+    $project_id = 'null';
+    if (!empty($task['project'])) {
+        $project_id = $task['project'];
+    }
     if (empty($task['date'])) {
         $deadline = 'null';
     }
@@ -29,21 +34,16 @@ if (!empty($_POST)) {
     if (is_uploaded_file($_FILES['preview']['tmp_name'])) {
         $tmp_name = $_FILES['preview']['tmp_name'];
         $path = uniqid();
-        move_uploaded_file($tmp_name, 'uploads/' . $path);
+        move_uploaded_file($tmp_name, '/' . $path);
         $file = '"' . $path .'"';
     }
     else {
         $file = 'null';
     }
     if (empty($errors)) {
-        $task_name = $task['name'];
-        $project_name = 'null';
-        if (!empty($task['project'])) {
-            $project_name = $task['project'];
-        }
 
         $sql = 'INSERT INTO tasks (сreate_date, complete_date, status, name, file, expire_date, user_id, project_id)
-        VALUES (NOW(), NULL, 0, "' . $task_name .'", ' . $file . ' , ' . $deadline . ', ' . $user_id . ', ' . $project_name . ')';
+        VALUES (NOW(), NULL, 0, "' . $task_name .'", ' . $file . ' , ' . $deadline . ', ' . $user_id . ', ' . $project_id . ')';
         $result_task = mysqli_query($link, $sql);
         if ($result_task) {
             header("Location: /");
