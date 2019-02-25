@@ -1,11 +1,10 @@
 <?php
 require_once 'init.php';
-$projects = resultArray($link, 'SELECT * FROM projects');
 $id_project = [];
 foreach ($projects as $project) {
    array_push($id_project,$project['id']);
 }
-$tasks = resultArray($link, 'SELECT * FROM tasks');
+//$tasks = resultArray($link, 'SELECT * FROM tasks');
 if (!empty($_POST)) {
     $task = $_POST;
     foreach ($task as $key => $value) {
@@ -85,6 +84,7 @@ if (!$link) {
  $layout_content = include_template('layout.php', [
        'tasks' => $tasks,
        'projects' => $projects,
+       'user' => $user,
  			'main' => $content,
  			'title' => 'Добавление задачи'
  			]);

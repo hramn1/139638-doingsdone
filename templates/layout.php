@@ -20,18 +20,26 @@
             </a>
 
             <div class="main-header__side">
+            <?php if (!empty($user)) : ?>
                 <a class="main-header__side-item button button--plus open-modal" href="add.php">Добавить задачу</a>
-
+            <?php endif; ?>
                 <div class="main-header__side-item user-menu">
+                 <?php if (!empty($user)) : ?>
                     <div class="user-menu__image">
                         <img src="img/user.png" width="40" height="40" alt="Пользователь">
                     </div>
 
                     <div class="user-menu__data">
-                        <p><?php  print($user[0]['usr_name'])   ?></p>
 
-                        <a href="#">Выйти</a>
+                        <p><?php  print($user['usr_name'])   ?></p>
+
+                        <a href="logout.php">Выйти</a>
                     </div>
+                     <?php else : ?>
+        <div class="main-header__side">
+          <a class="main-header__side-item button button--transparent" href="auth.php">Войти</a>
+        </div>
+                     <?php endif; ?>
                 </div>
             </div>
         </header>
@@ -42,7 +50,8 @@
 
                 <nav class="main-navigation">
                     <ul class="main-navigation__list">
-                    <?php foreach ($projects as $project) { ?>
+                    <?php foreach ($projects as $project) {
+                     ?>
                         <li class="main-navigation__list-item">
                             <a class="main-navigation__list-item-link" href="/index.php?id=<?= $project['id']?>"><?= $project['name'] ?></a>
                             <span class="main-navigation__list-item-count"><?php echo countTask ($tasks, $project['id']) ?></span>

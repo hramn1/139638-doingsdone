@@ -1,8 +1,6 @@
 <?php
   require('data.php');
   require_once 'init.php';
-  $link = mysqli_connect('localhost', 'doing', '300685', 'doingsdone') or die (mysqli_connect_error($link));
-  mysqli_set_charset($link, "utf8");
 
 
     if(!isset($_SESSION['user'])){
@@ -13,7 +11,7 @@
 }
   if (isset($_GET['id'])) {
     $id = (int) $_GET['id'];
-    $data = [$id, 1];
+    $data = [$id, $user_id];
     $tasks_project = resultArray($link, 'SELECT * FROM tasks WHERE project_id = ? AND user_id = ?', $data );
   }
   else {
@@ -22,7 +20,7 @@
 if($tasks_project){
   $page_content = include_template('index.php', [
         'tasks' => $tasks,
-  			'show_complete_tasks' => $show_complete_tasks,
+  		'show_complete_tasks' => $show_complete_tasks,
         'tasks_project' => $tasks_project
   			]);
       }

@@ -23,8 +23,7 @@ if (!$link) {
     $error = mysqli_connect_error();
 }
 
-$projects = resultArray($link, 'SELECT * FROM projects');
-$tasks = resultArray($link, 'SELECT * FROM tasks');
+//$tasks = resultArray($link, 'SELECT * FROM tasks');
     $content = include_template('add-project.php', [
     'projects' => $projects,
     'errors' => $errors
@@ -34,6 +33,7 @@ $tasks = resultArray($link, 'SELECT * FROM tasks');
  $layout_content = include_template('layout.php', [
        'tasks' => $tasks,
        'projects' => $projects,
+       'user' => $user,
  			'main' => $content,
  			'title' => 'Добавление проекта'
  			]);
