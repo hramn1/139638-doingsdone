@@ -1,13 +1,10 @@
 <?php
-require_once('functions.php');
+require_once('init.php');
 $data = [];
 $errors = [];
-$link = mysqli_connect('localhost', 'doing', '300685', 'doingsdone') or die (mysqli_connect_error($link));
-mysqli_set_charset($link, "utf8");
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Экранируем спецсимволы
     if (!empty($_POST)) {
-      // var_dump($_POST);
         $data = $_POST;
         foreach ($data as $key => $value) {
             // Удаляет пробелы из начала и конца строки

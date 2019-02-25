@@ -1,13 +1,10 @@
 <?php
-  date_default_timezone_set("Europe/Moscow");
   require('data.php');
-  require('functions.php');
+  require_once 'init.php';
   $link = mysqli_connect('localhost', 'doing', '300685', 'doingsdone') or die (mysqli_connect_error($link));
   mysqli_set_charset($link, "utf8");
-  $data =[1];
-  $user = resultArray($link, 'SELECT usr_name FROM users WHERE id = ?',$data);
-  $projects = resultArray($link, 'SELECT * FROM projects WHERE user_id = ?',$data);
-  $tasks = resultArray($link, 'SELECT * FROM tasks WHERE user_id = ?',$data);
+
+
     if(!isset($_SESSION['user'])){
      $page_content = include_template('guests.php', [
         ]);

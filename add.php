@@ -1,8 +1,5 @@
 <?php
-require_once 'functions.php';
-$link = mysqli_connect('localhost', 'doing', '300685', 'doingsdone') or die (mysqli_connect_error($link));
-mysqli_set_charset($link, "utf8");
-$user_id = 1;
+require_once 'init.php';
 $projects = resultArray($link, 'SELECT * FROM projects');
 $id_project = [];
 foreach ($projects as $project) {
