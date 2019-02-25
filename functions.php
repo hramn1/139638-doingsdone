@@ -1,5 +1,6 @@
 <?php
 require("mysql_helper.php");
+session_start();
 function include_template($name, $data) {
     $name = 'templates/' . $name;
     $result = '';
@@ -46,5 +47,13 @@ function resultArray ($link, $sql, $data = []) {
     else {
     return false;
     }
+}
+function check_date_format($date) {
+    $result = false;
+    $regexp = '/(\d{2})\.(\d{2})\.(\d{4})/m';
+    if (preg_match($regexp, $date, $parts) && count($parts) == 4) {
+        $result = checkdate($parts[2], $parts[1], $parts[3]);
+    }
+    return $result;
 }
 ?>
