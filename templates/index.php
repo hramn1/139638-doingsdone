@@ -32,7 +32,11 @@
                 <span class="checkbox__text"><?= strip_tags($task['name']) ?></span>
             </label>
         </td>
-
+        <td class="task__file">
+          <?php if ($task['file']): ?>
+            <a class="download-link" href="<?= 'uploads/' . $task['file']; ?>">Файл</a>
+          <?php endif; ?>
+</td>
         <td class="task__date"><?= strip_tags($task['сreate_date'])  ?></td>
     </tr>
      <?php } ?>
