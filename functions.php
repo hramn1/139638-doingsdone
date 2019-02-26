@@ -1,5 +1,6 @@
 <?php
 require("mysql_helper.php");
+$show_complete_tasks = rand(0, 1);
 function include_template($name, $data) {
     $name = 'templates/' . $name;
     $result = '';

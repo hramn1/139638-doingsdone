@@ -9,6 +9,15 @@
   print($page_content);
   exit();
 }
+if ((isset($_GET['task_id'])) ){
+    $task_id = (int) $_GET['task_id'];
+    $data = [$task_id];
+    $tasks = resultArray($link, 'UPDATE tasks SET status = 1 WHERE id = ?', $data );
+            header("Location: /");
+            exit();
+
+}
+
   if (isset($_GET['id'])) {
     $id = (int) $_GET['id'];
     $data = [$id, $user_id];
