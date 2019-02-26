@@ -1,14 +1,10 @@
 <?php
-require_once 'functions.php';
-$link = mysqli_connect('localhost', 'doing', '300685', 'doingsdone') or die (mysqli_connect_error($link));
-mysqli_set_charset($link, "utf8");
-$user_id = 1;
-$projects = resultArray($link, 'SELECT * FROM projects');
+require_once 'init.php';
 $id_project = [];
 foreach ($projects as $project) {
    array_push($id_project,$project['id']);
 }
-$tasks = resultArray($link, 'SELECT * FROM tasks');
+//$tasks = resultArray($link, 'SELECT * FROM tasks');
 if (!empty($_POST)) {
     $task = $_POST;
     foreach ($task as $key => $value) {
@@ -88,6 +84,7 @@ if (!$link) {
  $layout_content = include_template('layout.php', [
        'tasks' => $tasks,
        'projects' => $projects,
+       'user' => $user,
  			'main' => $content,
  			'title' => 'Добавление задачи'
  			]);

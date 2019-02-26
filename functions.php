@@ -1,6 +1,5 @@
 <?php
 require("mysql_helper.php");
-session_start();
 function include_template($name, $data) {
     $name = 'templates/' . $name;
     $result = '';

@@ -1,8 +1,5 @@
 <?php
-require_once 'functions.php';
-$link = mysqli_connect('localhost', 'doing', '300685', 'doingsdone') or die (mysqli_connect_error($link));
-mysqli_set_charset($link, "utf8");
-$user_id = 1;
+require_once 'init.php';
 if (!empty($_POST)) {
     $task = $_POST;
     $task['name'] = strip_tags($task['name']);
@@ -26,8 +23,7 @@ if (!$link) {
     $error = mysqli_connect_error();
 }
 
-$projects = resultArray($link, 'SELECT * FROM projects');
-$tasks = resultArray($link, 'SELECT * FROM tasks');
+//$tasks = resultArray($link, 'SELECT * FROM tasks');
     $content = include_template('add-project.php', [
     'projects' => $projects,
     'errors' => $errors
@@ -37,6 +33,7 @@ $tasks = resultArray($link, 'SELECT * FROM tasks');
  $layout_content = include_template('layout.php', [
        'tasks' => $tasks,
        'projects' => $projects,
+       'user' => $user,
  			'main' => $content,
  			'title' => 'Добавление проекта'
  			]);
