@@ -9,9 +9,9 @@
 <div class="tasks-controls">
     <nav class="tasks-switch">
         <a href="/<?php if (!empty($id)) : ?>?id=<?= $id; ?><?php endif; ?>" class="tasks-switch__item tasks-switch__item--active">Все задачи</a>
-        <a href="/?<?php if (!empty($id)) : ?>id=<?= $id; ?>&<?php endif; ?>today" class="tasks-switch__item">Повестка дня</a>
-        <a href="/?<?php if (!empty($id)) : ?>id=<?= $id; ?>&<?php endif; ?>tomorrow" class="tasks-switch__item">Завтра</a>
-        <a href="/?<?php if (!empty($id)) : ?>id=<?= $id; ?>&<?php endif; ?>expired" class="tasks-switch__item">Просроченные</a>
+        <a href="/?<?php if (!empty($id)) : ?>id=<?= $id; ?>&<?php endif; ?>time = today" class="tasks-switch__item">Повестка дня</a>
+        <a href="/?<?php if (!empty($id)) : ?>id=<?= $id; ?>&<?php endif; ?>time = tomorrow" class="tasks-switch__item">Завтра</a>
+        <a href="/?<?php if (!empty($id)) : ?>id=<?= $id; ?>&<?php endif; ?>time = expired" class="tasks-switch__item">Просроченные</a>
     </nav>
 
     <label class="checkbox">
