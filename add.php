@@ -1,5 +1,9 @@
 <?php
 require_once 'init.php';
+    if(!isset($_SESSION['user'])){
+     header("Location: /");
+                 exit();
+        }
 $id_project = [];
 foreach ($projects as $project) {
    array_push($id_project,$project['id']);
@@ -54,16 +58,15 @@ if (!empty($_POST)) {
           $errors['file'] = 'Слишком большой';
         }
         else {
-          move_uploaded_file($tmp_name, '/' . $path);
+          move_uploaded_file($tmp_name, 'uploads/' . $path);
         }
     }
     else {
         $file = 'null';
     }
     if (empty($errors)) {
-
         $sql = 'INSERT INTO tasks (сreate_date, complete_date, status, name, file, expire_date, user_id, project_id)
-        VALUES (NOW(), NULL, 0, "' . $task_name .'", ' . $file . ' , ' . $deadline . ', ' . $user_id . ', ' . $project_id . ')';
+        VALUES (NOW(), NULL, 0, "' . $task_name .'", ' . $file . ' , STR_TO_DATE(' . $deadline . ',"%d.%m.%Y") , ' . $user_id . ', ' . $project_id . ')';
         $result_task = mysqli_query($link, $sql);
         if ($result_task) {
             header("Location: /");

@@ -1,5 +1,9 @@
 <?php
 require_once 'init.php';
+    if(!isset($_SESSION['user'])){
+     header("Location: /");
+                 exit();
+        };
 if (!empty($_POST)) {
     $task = $_POST;
     $task['name'] = strip_tags($task['name']);

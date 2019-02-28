@@ -28,11 +28,15 @@
     <tr class="tasks__item task <?php if($task['status']) { print ('task--completed'); }; if (isExpire($task['expire_date'])) {echo  ('task--important'); };?>" data-category = '<?= strip_tags($task['project_id'])  ?>' >
         <td class="task__select">
             <label class="checkbox task__checkbox">
-                <input class="checkbox__input visually-hidden task__checkbox" type="checkbox" value="1">
+                <input class="checkbox__input visually-hidden task__checkbox" type="checkbox" value="<?= strip_tags($task['id']) ?>">
                 <span class="checkbox__text"><?= strip_tags($task['name']) ?></span>
             </label>
         </td>
-
+        <td class="task__file">
+          <?php if ($task['file']): ?>
+            <a class="download-link" href="<?= 'uploads/' . $task['file']; ?>">Файл</a>
+          <?php endif; ?>
+</td>
         <td class="task__date"><?= strip_tags($task['сreate_date'])  ?></td>
     </tr>
      <?php } ?>
