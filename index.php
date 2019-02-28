@@ -29,6 +29,7 @@ if ((isset($_GET['task_id'])) ){
 if($tasks_project){
   $page_content = include_template('index.php', [
         'tasks' => $tasks,
+        'id' => $id,
   		'show_complete_tasks' => $show_complete_tasks,
         'tasks_project' => $tasks_project
   			]);
