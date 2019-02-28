@@ -33,16 +33,14 @@ $errors = [];
              $errors['email'] = 'Такой пользователь не найден';
          }
          else {
-                foreach ($users as $user){
-                    if (password_verify($data['password'], $user['usr_pass'])) {
-                        $_SESSION['user'] = $user;
-                        header("Location: /");
-                           exit();
-                    }
-                    else {
-                        $errors['password'] = 'Неверный пароль';
-                    }
-                }
+           if (password_verify($data['password'], $users[0]['usr_pass'])) {
+                      $_SESSION['user'] = $users[0];
+                      header("Location: /");
+                         exit();
+                  }
+                  else {
+                      $errors['password'] = 'Неверный пароль';
+                  }
             }
         }
     }
