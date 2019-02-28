@@ -8,10 +8,10 @@
 
 <div class="tasks-controls">
     <nav class="tasks-switch">
-        <a href="/<?php if (!empty($id)) : ?>?id=<?= $id; ?><?php endif; ?>" class="tasks-switch__item tasks-switch__item--active">Все задачи</a>
-        <a href="/?<?php if (!empty($id)) : ?>id=<?= $id; ?>&<?php endif; ?>time = today" class="tasks-switch__item">Повестка дня</a>
-        <a href="/?<?php if (!empty($id)) : ?>id=<?= $id; ?>&<?php endif; ?>time = tomorrow" class="tasks-switch__item">Завтра</a>
-        <a href="/?<?php if (!empty($id)) : ?>id=<?= $id; ?>&<?php endif; ?>time = expired" class="tasks-switch__item">Просроченные</a>
+        <a href="/<?php if (!empty($id)) : ?>?id=<?= $id; ?><?php endif; ?>" class="tasks-switch__item <?php if($time === 0) { print('tasks-switch__item--active'); }?>">Все задачи</a>
+        <a href="/?<?php if (!empty($id)) : ?>id=<?= $id; ?>&<?php endif; ?>time=today" class="tasks-switch__item <?php if($time === 'today') { print('tasks-switch__item--active'); }?>">Повестка дня</a>
+        <a href="/?<?php if (!empty($id)) : ?>id=<?= $id; ?>&<?php endif; ?>time=tomorrow" class="tasks-switch__item <?php if($time === 'tomorrow') { print('tasks-switch__item--active'); }?>">Завтра</a>
+        <a href="/?<?php if (!empty($id)) : ?>id=<?= $id; ?>&<?php endif; ?>time=expired" class="tasks-switch__item <?php if($time === 'expired') { print('tasks-switch__item--active'); }?>">Просроченные</a>
     </nav>
 
     <label class="checkbox">

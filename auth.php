@@ -25,9 +25,6 @@ $errors = [];
     if (empty($errors)) {
         $email = $data['email'];
         $dataSql = [$email];
-//            $sql = 'SELECT * FROM users WHERE email = "' . $email . '"';
-//            $res = mysqli_query($link, $sql);
-//            $user = $res ? mysqli_fetch_array($res, MYSQLI_ASSOC) : null;
          $users = resultArray($link, 'SELECT * FROM users WHERE email = ?', $dataSql );
          if ($users === []) {
              $errors['email'] = 'Такой пользователь не найден';

@@ -27,7 +27,6 @@ if (!$link) {
     $error = mysqli_connect_error();
 }
 
-//$tasks = resultArray($link, 'SELECT * FROM tasks');
     $content = include_template('add-project.php', [
     'projects' => $projects,
     'errors' => $errors
