@@ -9,6 +9,18 @@
   print($page_content);
   exit();
 }
+    if ((isset($_GET['show_completed'])) ){
+        $show_completed = (int) $_GET['show_completed'];
+        if ( $show_completed === 1) {
+            $show_complete_tasks =  1;
+        }
+        else {
+            $show_complete_tasks =  0;
+        }
+    }
+    else {
+        $show_complete_tasks =  0;
+    }
 if ((isset($_GET['task_id'])) ){
     $task_id = (int) $_GET['task_id'];
     $data = [$task_id];

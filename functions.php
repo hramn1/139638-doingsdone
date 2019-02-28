@@ -1,18 +1,6 @@
 <?php
 require("mysql_helper.php");
 //$show_complete_tasks = rand(0, 1);
-if ((isset($_GET['show_completed'])) ){
-    $show_completed = (int) $_GET['show_completed'];
-    if ( $show_completed === 1) {
-        $show_complete_tasks =  1;
-    }
-    else {
-        $show_complete_tasks =  0;
-    }
-}
-else {
-    $show_complete_tasks =  0;
-}
 
 function include_template($name, $data) {
     $name = 'templates/' . $name;
