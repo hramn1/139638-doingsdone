@@ -11,7 +11,13 @@
     if ((isset($_GET['task_id'])) ){
         $task_id = (int) $_GET['task_id'];
         $data = [$task_id];
+        $statuses = resultArray($link, 'SELECT status FROM tasks WHERE id = ?', $data );
+        $status = $statuses[0]['status'];
+        if ($status === 0) {
         $tasks = resultArray($link, 'UPDATE tasks SET status = 1 WHERE id = ?', $data );
+      } else {
+        $tasks = resultArray($link, 'UPDATE tasks SET status = 0 WHERE id = ?', $data );
+      }
                 header("Location: /");
                 exit();
 
