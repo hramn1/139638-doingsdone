@@ -2,6 +2,18 @@
 require_once 'functions.php';
 session_start();
 date_default_timezone_set("Europe/Moscow");
+if ((isset($_GET['show_completed'])) ){
+    $show_completed = (int) $_GET['show_completed'];
+    if ( $show_completed === 1) {
+        $show_complete_tasks =  1;
+    }
+    else {
+        $show_complete_tasks =  0;
+    }
+}
+else {
+    $show_complete_tasks =  0;
+}
 $link = mysqli_connect('localhost', 'doing', '300685', 'doingsdone') or die (mysqli_connect_error($link));
 mysqli_set_charset($link, "utf8");
 

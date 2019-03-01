@@ -31,7 +31,7 @@
 
                     <div class="user-menu__data">
 
-                        <p><?php  print($user['usr_name'])   ?></p>
+                        <p><?= strip_tags($user['usr_name']) ?></p>
 
                         <a href="logout.php">Выйти</a>
                     </div>
@@ -53,7 +53,7 @@
                     <?php foreach ($projects as $project) {
                      ?>
                         <li class="main-navigation__list-item">
-                            <a class="main-navigation__list-item-link" href="/index.php?id=<?= $project['id']?>"><?= $project['name'] ?></a>
+                            <a class="main-navigation__list-item-link" href="/index.php?id=<?= $project['id']?>"><?= strip_tags($project['name']) ?></a>
                             <span class="main-navigation__list-item-count"><?php echo countTask ($tasks, $project['id']) ?></span>
                         </li>
                      <?php } ?>

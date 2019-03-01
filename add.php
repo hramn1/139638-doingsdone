@@ -8,7 +8,6 @@ $id_project = [];
 foreach ($projects as $project) {
    array_push($id_project,$project['id']);
 }
-//$tasks = resultArray($link, 'SELECT * FROM tasks');
 if (!empty($_POST)) {
     $task = $_POST;
     foreach ($task as $key => $value) {
