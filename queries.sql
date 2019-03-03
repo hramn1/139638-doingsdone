@@ -3,7 +3,7 @@ VALUES
 ('goga@ya.ru', 'Вася', '$2y$10$wyVXbp2PY6rTKCIKPqBn0O.CJswQWcmV/S42Fx8DC6RfgIuFJDW9q'),
 ('goga1@ya.ru', 'Петя', '$2y$10$kDTzlf.vpBQ60Ku3Qe5xqekoTEqElXjWG75Az41oCgYHtVEnHA2wa');
 
-INSERT INTO  (name, user_id)
+INSERT INTO projects (name, user_id)
 VALUES
 ('Входящие','1'),
 ('Учеба','2'),

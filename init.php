@@ -24,7 +24,7 @@ else {
     $user = [];
     }
 $user_id = !empty($user['id']) ? $user['id'] : '';
-$data =[ $user_id];
+$data = [$user_id];
   $projects = resultArray($link, 'SELECT * FROM projects WHERE user_id = ?',$data);
   $tasks = resultArray($link, 'SELECT * FROM tasks WHERE user_id = ?',$data);
 ?>

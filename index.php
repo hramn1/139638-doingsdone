@@ -1,6 +1,5 @@
 <?php
   require_once 'init.php';
-
     if(!isset($_SESSION['user'])){
         $page_content = include_template('guests.php', [
             ]);
@@ -46,6 +45,15 @@
         $sql = $sql . ' AND expire_date < CURDATE()';
     }
     $tasks_project = resultArray($link, $sql , $data );
+    }
+
+    if(isset($_GET['search'])) {
+        $search = trim($_GET['search']);
+        $data = [$user_id, $search];
+        if(!empty($search)){
+        $sql =  'SELECT * FROM tasks WHERE user_id = ? AND  MATCH(name) AGAINST(? IN BOOLEAN MODE)  ';
+        $tasks_project = resultArray($link, $sql , $data );
+        }
     }
 
     if($tasks_project){

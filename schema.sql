@@ -27,3 +27,4 @@ CREATE TABLE users (
 );
  CREATE UNIQUE INDEX t_name ON tasks(name);
  CREATE UNIQUE INDEX c_email ON users(email);
+ CREATE FULLTEXT INDEX tasks_ft_search ON tasks(name);
