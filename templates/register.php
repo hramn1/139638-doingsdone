@@ -38,17 +38,16 @@
               <label class="form__label" for="email">E-mail <sup>*</sup></label>
 
               <input class="form__input <?php if (!empty($errors['email'])){
-                                                    print ("form__input--error");} ?>" type="email" name="email" id="email" value="" placeholder="Введите e-mail">
-
-              <p class="form__message"><?= $errors['email'] ?></p>
+              print ("form__input--error");} ?>" type="email" name="email" id="email" value="" placeholder="Введите e-mail">
+              <p class="form__message"><?= !empty($errors['email']) ? $errors['email'] : ""?></p>
             </div>
 
             <div class="form__row">
               <label class="form__label" for="password">Пароль <sup>*</sup></label>
 
               <input class="form__input <?php if (!empty($errors['password'])){
-                                                    print ("form__input--error");} ?>" type="password" name="password" id="password" value="" placeholder="Введите пароль">
-              <p class="form__message"><?= $errors['password'] ?></p>
+              print ("form__input--error");} ?>" type="password" name="password" id="password" value="" placeholder="Введите пароль">
+              <p class="form__message"><?= !empty($errors['password']) ? $errors['password'] : ""?></p>
             </div>
 
             <div class="form__row">
@@ -56,7 +55,7 @@
 
               <input class="form__input  <?php if (!empty($errors['name'])){
                                                     print ("form__input--error");} ?>  " type="text" name="name" id="name" value="" placeholder="Введите имя">
-              <p class="form__message"><?= $errors['name'] ?></p>
+              <p class="form__message"><?= !empty($errors['name']) ? $errors['name'] : ""?></p>
             </div>
 
             <div class="form__row form__row--controls">

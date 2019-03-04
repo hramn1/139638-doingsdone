@@ -4,6 +4,7 @@ ini_set('display_errors', 1);
 require_once 'functions.php';
 session_start();
 date_default_timezone_set("Europe/Moscow");
+
 if ((isset($_GET['show_completed'])) ){
     $show_completed = (int) $_GET['show_completed'];
     if ( $show_completed === 1) {
@@ -26,6 +27,7 @@ else {
     $user = [];
     }
 $user_id = !empty($user['id']) ? $user['id'] : '';
+$id= $_GET['id'] ?? '';
 $data = [$user_id];
   $projects = resultArray($link, 'SELECT * FROM projects WHERE user_id = ?',$data);
   $tasks = resultArray($link, 'SELECT * FROM tasks WHERE user_id = ?',$data);

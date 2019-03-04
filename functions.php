@@ -43,9 +43,7 @@ function resultArray ($link, $sql, $data = []) {
     if ($result) {
     return mysqli_fetch_all($result,MYSQLI_ASSOC);
     }
-    else {
     return false;
-    }
 }
 function check_date_format($date) {
     $result = false;
@@ -54,5 +52,13 @@ function check_date_format($date) {
         $result = checkdate($parts[2], $parts[1], $parts[3]);
     }
     return $result;
+}
+function control_user($user){
+    if(empty($user)){
+        $page_content = include_template('guests.php', [
+            ]);
+        print($page_content);
+        exit();
+    }
 }
 ?>

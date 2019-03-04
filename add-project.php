@@ -1,10 +1,7 @@
 <?php
 require_once 'init.php';
 $errors = [];
-    if(!isset($_SESSION['user'])){
-     header("Location: /");
-                 exit();
-        };
+control_user($user);
 if (!empty($_POST)) {
     $task = $_POST;
     $task['name'] = strip_tags($task['name']);
@@ -27,19 +24,16 @@ if (!empty($_POST)) {
 if (!$link) {
     $error = mysqli_connect_error();
 }
-
     $content = include_template('add-project.php', [
     'projects' => $projects,
     'errors' => $errors
     ]);
 
-
  $layout_content = include_template('layout.php', [
-       'tasks' => $tasks,
-       'projects' => $projects,
-       'user' => $user,
- 			'main' => $content,
- 			'title' => 'Добавление проекта'
- 			]);
-
+    'tasks' => $tasks,
+    'projects' => $projects,
+    'user' => $user,
+    'main' => $content,
+    'title' => 'Добавление проекта'
+        ]);
   echo  $layout_content;

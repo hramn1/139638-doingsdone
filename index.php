@@ -1,11 +1,6 @@
 <?php
   require_once 'init.php';
-    if(!isset($_SESSION['user'])){
-        $page_content = include_template('guests.php', [
-            ]);
-          print($page_content);
-          exit();
-    }
+  control_user($user);
     if ((isset($_GET['task_id'])) ){
         $task_id = (int) $_GET['task_id'];
         $data = [$task_id];
@@ -20,7 +15,6 @@
                 exit();
 
     }
-
       if (isset($_GET['id'])) {
         $id = (int) $_GET['id'];
         $data = [$id, $user_id];

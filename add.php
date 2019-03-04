@@ -1,9 +1,6 @@
 <?php
 require_once 'init.php';
-    if(!isset($_SESSION['user'])){
-     header("Location: /");
-                 exit();
-        }
+  control_user($user);
 $id_project = [];
 foreach ($projects as $project) {
    array_push($id_project,$project['id']);
