@@ -46,8 +46,9 @@ if (!empty($_POST)) {
     if (is_uploaded_file($_FILES['preview']['tmp_name'])) {
         $tmp_name = $_FILES['preview']['tmp_name'];
         $file_size =  $_FILES['preview']['size'];
+        $ext = pathinfo($_FILES['preview']['name'], PATHINFO_EXTENSION);
         $path = uniqid();
-        $file = '"' . $path .'"';
+        $file = '"' . $path . '.' . $ext .'"' ;
         $finfo = finfo_open(FILEINFO_MIME_TYPE);
         $file_type = finfo_file($finfo, $tmp_name);
         if ($file_type === "application/javascript") {
@@ -57,7 +58,7 @@ if (!empty($_POST)) {
           $errors['file'] = 'Слишком большой';
         }
         else {
-          move_uploaded_file($tmp_name, 'uploads/' . $path);
+          move_uploaded_file($tmp_name, 'uploads/' . $path . ".". $ext);
         }
     }
     else {

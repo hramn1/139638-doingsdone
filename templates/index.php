@@ -33,7 +33,7 @@
             </label>
         </td>
         <td class="task__file">
-          <?php if ($task['file']): ?>
+          <?php if ($task['file']):  ?>
             <a class="download-link" href="<?= 'uploads/' . $task['file']; ?>">Файл</a>
           <?php endif; ?>
 </td>
