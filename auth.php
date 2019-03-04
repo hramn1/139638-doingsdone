@@ -6,7 +6,9 @@ $errors = [];
         $data = $_POST;
         foreach ($data as $key => $value) {
             // Удаляет пробелы из начала и конца строки
+            if (!empty($data[$key])) {
             $data[$key] = trim($value);
+          }
         }
     $required = ['email', 'password'];
     // Обязательные поля

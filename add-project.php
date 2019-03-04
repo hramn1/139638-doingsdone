@@ -1,5 +1,6 @@
 <?php
 require_once 'init.php';
+$errors = [];
     if(!isset($_SESSION['user'])){
      header("Location: /");
                  exit();

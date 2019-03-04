@@ -6,7 +6,7 @@
 
     <input class="form__input <?php if (!empty($errors['name'])){
     print ("form__input--error");} ?>" type="text" name="name" id="project_name" value="" placeholder="Введите название проекта">
-      <p class="form__message"><?= $errors['name'] ?></p>
+      <p class="form__message"><?= !empty($errors['name']) ? $errors['name'] : ""?></p>
   </div>
 
   <div class="form__row form__row--controls">
