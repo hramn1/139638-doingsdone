@@ -2,6 +2,7 @@
 require_once('init.php');
 $data = [];
 $errors = [];
+$res = [];
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Экранируем спецсимволы
     if (!empty($_POST)) {
@@ -33,9 +34,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
             $errors['email'] = 'E-mail введён некорректно';
         }
-        $sql = 'SELECT id FROM users WHERE email = "' . $data['email'] . '"';
-        $res = mysqli_query($link, $sql);
-        if (mysqli_num_rows($res) > 0) {
+        $dataSql = [$data['email']];
+        $sql = 'SELECT id FROM users WHERE email = ?';
+        $res = resultArray ($link, $sql, $dataSql );
+        if ($res !==  []) {
             $errors['email'] = 'Пользователь с этим email уже зарегистрирован';
         }
     }
@@ -44,12 +46,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $password = password_hash($data['password'], PASSWORD_DEFAULT);
     }
     if (empty($errors)) {
-        $sql_user = 'INSERT INTO users (reg_dt, email, usr_name, usr_pass) VALUES (NOW(), "' . $data['email'] . '", "' . $data['name'] . '", "' . $password . '")';
-        $result_user = mysqli_query($link, $sql_user);
-        if ($result_user) {
-            header("Location: /");
+        $sql_user = 'INSERT INTO users (reg_dt, email, usr_name, usr_pass) VALUES (NOW(), ?, ?, ?)';
+        $dataSql = [$data['email'],$data['name'],$password];
+        $result_user = resultArray ($link, $sql_user, $dataSql );
+            header("Location: /auth.php");
             exit();
-        }
     }
 }
 $layout_content = include_template('register.php', [

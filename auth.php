@@ -27,7 +27,7 @@ $errors = [];
     if (empty($errors)) {
         $email = $data['email'];
         $dataSql = [$email];
-         $users = resultArray($link, 'SELECT * FROM users WHERE email = ?', $dataSql );
+        $users = resultArray($link, 'SELECT * FROM users WHERE email = ?', $dataSql );
          if ($users === []) {
              $errors['email'] = 'Такой пользователь не найден';
          }

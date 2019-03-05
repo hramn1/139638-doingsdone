@@ -60,7 +60,7 @@
                 ]);
           }
           else {
-            $page_content = 'Задачи не найлены';
+            $page_content = 'Задачи не найдены';
       }
       $layout_content = include_template('layout.php', [
             'tasks' => $tasks,

@@ -17,12 +17,10 @@ if (!empty($_POST)) {
           $errors['name'] = 'Такой проект уже есть';
       } else {
         $sql = 'INSERT INTO projects (name, user_id)
-        VALUES ( "' . $task['name'] .'",  ' . $user_id . ')';
-        $result_task = mysqli_query($link, $sql);
-        if ($result_task) {
-            header("Location: /");
-            exit();
-          }
+        VALUES (?,  ?)';
+        $data = [$task['name'],$user_id];
+        $result_task = resultArray($link, $sql, $data);
+        header("Refresh:0");
         }
     }
 }
