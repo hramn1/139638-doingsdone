@@ -1,0 +1,15 @@
+{
+    "name": "hramn/doingsdone",
+    "description": "do it",
+    "type": "project",
+    "license": "1.2",
+    "authors": [
+        {
+            "name": "hramn1",
+            "email": "stmihailov@yandex.ru"
+        }
+    ],
+    "require": {
+        "swiftmailer/swiftmailer": "^6.1"
+    }
+}
