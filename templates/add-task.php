@@ -7,7 +7,7 @@
             <input class="form__input <?php if (!empty($errors['name'])){
                                                   print ("form__input--error");} ?>"
            type="text" name="name" id="name" value="" placeholder="Введите название">
-            <p class="form__message"><?= $errors['name'] ?></p>
+            <p class="form__message"><?= !empty($errors['name']) ? $errors['name'] : ""?></p>
 
           </div>
           <div class="form__row">
@@ -17,7 +17,7 @@
               <option value="<?=$project['id']?>"><?= strip_tags($project['name'])?></option>
                         <?php } ?>
             </select>
-            <p class="form__message"><?= $errors['project']  ?></p>
+            <p class="form__message"><?= !empty($errors['project']) ? $errors['project'] : ""?></p>
 
 
           </div>
@@ -28,7 +28,7 @@
             <input class="form__input form__input--date <?php if (!empty($errors['date'])){
               print ("form__input--error");} ?>" type="date" name="date" id="date" value="<?= date("j.n.Y"); ?>" placeholder="Введите дату в формате ДД.ММ.ГГГГ">
 
-                <p class="form__message"><?= $errors['date'] ?></p>
+                <p class="form__message"><?= !empty($errors['date']) ? $errors['date'] : ""?></p>
           </div>
 
           <div class="form__row">
@@ -41,7 +41,7 @@
                 <span>Выберите файл</span>
               </label>
             </div>
-            <p class="form__message"><?= $errors['file']  ?></p>
+            <p class="form__message"><?= !empty($errors['file']) ? $errors['file'] : ""?></p>
           </div>
 
           <div class="form__row form__row--controls">

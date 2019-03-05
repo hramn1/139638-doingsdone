@@ -2,6 +2,7 @@
 require_once 'init.php';
   control_user($user);
 $id_project = [];
+$errors = [];
 foreach ($projects as $project) {
    array_push($id_project,$project['id']);
 }

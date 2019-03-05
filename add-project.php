@@ -11,13 +11,18 @@ if (!empty($_POST)) {
         $errors['name'] = 'Это поле надо заполнить';
     }
     if (empty($errors)) {
-
+      $sql = 'SELECT name FROM projects WHERE user_id = "' . $user_id . '" AND name ="'. $task['name'] .'"'  ;
+      $result_task = mysqli_query($link, $sql);
+      if (mysqli_num_rows($result_task) > 0) {
+          $errors['name'] = 'Такой проект уже есть';
+      } else {
         $sql = 'INSERT INTO projects (name, user_id)
         VALUES ( "' . $task['name'] .'",  ' . $user_id . ')';
         $result_task = mysqli_query($link, $sql);
         if ($result_task) {
             header("Location: /");
             exit();
+          }
         }
     }
 }

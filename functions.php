@@ -48,7 +48,7 @@ function resultArray ($link, $sql, $data = []) {
 function check_date_format($date) {
     $result = false;
     $regexp = '/(\d{2})\.(\d{2})\.(\d{4})/m';
-    if (preg_match($regexp, $date, $parts) && count($parts) == 4) {
+    if (preg_match($regexp, $date, $parts) && count($parts) === 4) {
         $result = checkdate($parts[2], $parts[1], $parts[3]);
     }
     return $result;

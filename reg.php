@@ -2,7 +2,7 @@
 require_once('init.php');
 $data = [];
 $errors = [];
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Экранируем спецсимволы
     if (!empty($_POST)) {
         $data = $_POST;
