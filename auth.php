@@ -49,8 +49,8 @@ $errors = [];
     ]);
     $layout_content = include_template('layout.php', [
         'main' => $page_content,
-               'tasks' => $tasks,
-               'projects' => $projects,
+        'tasks' => $tasks,
+        'projects' => $projects,
         'title' => 'Вход на сайт',
         'tasks_active' => '',
     ]);

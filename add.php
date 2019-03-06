@@ -63,10 +63,11 @@ if (!empty($_POST)) {
         $file = 'null';
     }
     if (empty($errors)) {
+        $data = [$task_name,$user_id,$project_id];
         $sql = 'INSERT INTO tasks (сreate_date, complete_date, status, name, file, expire_date, user_id, project_id)
-        VALUES (NOW(), NULL, 0, "' . $task_name .'", ' . $file . ' , STR_TO_DATE(' . $deadline . ',"%d.%m.%Y") , ' . $user_id . ', ' . $project_id . ')';
-        $result_task = mysqli_query($link, $sql);
-        if ($result_task) {
+        VALUES (NOW(), NULL, 0, ?, ' . $file . ' , STR_TO_DATE(' . $deadline . ',"%d.%m.%Y") , ?, ?)';
+        $result_task = resultArray($link, $sql,$data);
+        if ($result_task !== []) {
             header("Location: /");
             exit();
         }

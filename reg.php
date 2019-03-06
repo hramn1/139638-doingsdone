@@ -46,7 +46,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $password = password_hash($data['password'], PASSWORD_DEFAULT);
     }
     if (empty($errors)) {
-        $sql_user = 'INSERT INTO users (reg_dt, email, usr_name, usr_pass) VALUES (NOW(), ?, ?, ?)';
+        $sql_user = 'INSERT INTO users (reg_dt, email, usr_name, usr_pass)
+        VALUES (NOW(), ?, ?, ?)';
         $dataSql = [$data['email'],$data['name'],$password];
         $result_user = resultArray ($link, $sql_user, $dataSql );
             header("Location: /auth.php");

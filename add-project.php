@@ -11,9 +11,10 @@ if (!empty($_POST)) {
         $errors['name'] = 'Это поле надо заполнить';
     }
     if (empty($errors)) {
-      $sql = 'SELECT name FROM projects WHERE user_id = "' . $user_id . '" AND name ="'. $task['name'] .'"'  ;
-      $result_task = mysqli_query($link, $sql);
-      if (mysqli_num_rows($result_task) > 0) {
+      $data = [$user_id,$task['name']];
+      $sql = 'SELECT name FROM projects WHERE user_id = ? AND name =?';
+      $result_task = resultArray($link, $sql, $data);
+      if ($result_task !== []) {
           $errors['name'] = 'Такой проект уже есть';
       } else {
         $sql = 'INSERT INTO projects (name, user_id)
