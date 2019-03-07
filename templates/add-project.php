@@ -14,5 +14,5 @@
   </div>
   <?php if (!empty($errors)) : ?>
       <p class="form__message">Пожалуйста, исправьте ошибки в форме</p>
-<?php endif; ?>
+  <?php endif; ?>
 </form>
