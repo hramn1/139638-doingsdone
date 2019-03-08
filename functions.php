@@ -1,5 +1,12 @@
 <?php
 require("mysql_helper.php");
+/**
+* Функция для подключения шаблона
+*
+* @param $name string название шаблона
+* @param $data array данные для передачи в шаблон
+* @return $result Шаблон
+*/
 function include_template($name, $data) {
     $name = 'templates/' . $name;
     $result = '';
@@ -16,6 +23,13 @@ function include_template($name, $data) {
 
     return $result;
 }
+/**
+ * Считает количество задач в проекте
+ * @param $tasks_list array Список задач
+ * @param $name_project integer id проекта
+ *
+ * @return $count_name_project integer Количество задач
+ */
 function countTask ($tasks, $project){
         $count = 0;
         foreach ($tasks as $task) {
@@ -35,7 +49,14 @@ $date =strtotime('+1 day', strtotime($dateString));
     }
         return false;
 }
-
+/**
+* Функция для защииты от sql инъекций
+*
+* @param $link данные для соединения
+* @param $sql обращение к БД
+* @param $data массив из значений для $sql
+* @return возвращает либо строки из БД в виде массива либо в случае неудачи булевое значение false
+*/
 function resultArray ($link, $sql, $data = []) {
     $stmt = db_get_prepare_stmt($link, $sql, $data);
     mysqli_stmt_execute($stmt);
@@ -45,6 +66,12 @@ function resultArray ($link, $sql, $data = []) {
     }
     return false;
 }
+/**
+* Функция для проверки формата даты
+*
+* @param $date Дата
+* @return возвращает булевое значение true, если дата корректная, дибо false если некоректная
+*/
 function check_date_format($date) {
     $result = false;
     $regexp = '/(\d{2})\.(\d{2})\.(\d{4})/m';
@@ -53,6 +80,11 @@ function check_date_format($date) {
     }
     return $result;
 }
+/**
+* Функция выполняет загрузку шаблона если пользователь отсутвует
+*
+* @param $user пользователь
+*/
 function control_user($user){
     if(empty($user)){
         $page_content = include_template('guests.php', [
